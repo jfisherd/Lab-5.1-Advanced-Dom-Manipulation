@@ -46,7 +46,7 @@ addProductButton.addEventListener("click", function () {
   buttonRemove.addEventListener("click", (event) => {
     totalPrice -= Number(event.target.closest("ul").price)
     totalPriceSpan.innerHTML = totalPrice
-    myCart.splice(event.target.closest("ul").productCounter-1)
+    myCart.splice(event.target.closest("ul").productCounter, 1)
     event.target.closest("ul").remove()
   })
 
@@ -70,12 +70,6 @@ addProductButton.addEventListener("click", function () {
   cart.innerHTML = ""
   for (i = 0; i < myCart.length; i++) { // re-render the cart
     cart.appendChild(myCart[i])
-    console.log(cart)
   }
 
 })
-
-
-// for (i=0;i<myCart.length;i++) {
-
-// }
