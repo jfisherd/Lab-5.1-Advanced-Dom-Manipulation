@@ -24,16 +24,24 @@ function removeItem(event) {
 
 // Add Product button event listener
 addProductButton.addEventListener("click", function () {
-  newObject = document.createElement("li") // make a new list element object
-  newObject.name = productNameInput.value // give it name class
-  newObject.innerHTML = newObject.name
-  newObject.price = productPriceInput.value // give it a price class
-  myCart.push(newObject) // add the new object to the object array
+  newLine = document.createElement("ul") // contains item info and remove button
+  
+  newItem = document.createElement("li") // item name and price
+  newItem.name = productNameInput.value // give it name class
+  newItem.innerHTML = newItem.name
+  newItem.price = productPriceInput.value // give it a price class
 
-  totalPrice += Number(newObject.price) // calculate total price
+  newButton = document.createElement("button") // remove button
+  newButton.innerHTML = "Remove"
+
+  newLine.append(newItem,newButton)
+  myCart.push(newLine) // add the new object to the object array
+
+  totalPrice += Number(newItem.price) // calculate total price
   totalPriceSpan.innerHTML = totalPrice
 
-
+  productNameInput.value = ""
+  productPriceInput.value = ""
 
   cart.innerHTML = ""
   for (i=0;i<myCart.length;i++) { // re-render the cart
