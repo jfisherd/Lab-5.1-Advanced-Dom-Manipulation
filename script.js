@@ -24,12 +24,12 @@ function removeItem(event) {
 
 // Add Product button event listener
 addProductButton.addEventListener("click", function () {
-  if (productNameInput.value == "") return alert("enter a name") 
-  if (productPriceInput.value == "") return alert("enter a price") 
+  if (productNameInput.value == "") return alert("enter a name")
+  if (productPriceInput.value == "") return alert("enter a price")
   if (productPriceInput.value < 0) return alert("price cannot be negative")
 
   newLine = document.createElement("ul") // contains item info and remove button
-  
+
   newItem = document.createElement("li") // item name and price
   newItem.name = productNameInput.value // give it name class
   newItem.innerHTML = newItem.name
@@ -37,12 +37,19 @@ addProductButton.addEventListener("click", function () {
 
   buttonRemove = document.createElement("button") // remove button
   buttonRemove.innerHTML = "Remove"
+  buttonRemove.addEventListener("click", (event) => {
+    event.target.closest("ul").remove()
+  })
+
   buttonQuantityUp = document.createElement("button") // quantity up button 
   buttonQuantityUp.innerHTML = "+"
+  // buttonQuantityUp.addEventListener("click", )
+
   buttonQuantityDown = document.createElement("button") // quantity down button
   buttonQuantityDown.innerHTML = "-"
+  // buttonQuantityDown.addEventListener("click", )
 
-  newLine.append(newItem, buttonRemove, buttonQuantityUp, buttonQuantityDown) 
+  newLine.append(newItem, buttonRemove, buttonQuantityUp, buttonQuantityDown)
   myCart.push(newLine) // add the new object to the object array
 
   totalPrice += Number(newItem.price) // calculate total price
@@ -52,7 +59,7 @@ addProductButton.addEventListener("click", function () {
   productPriceInput.value = ""
 
   cart.innerHTML = ""
-  for (i=0;i<myCart.length;i++) { // re-render the cart
+  for (i = 0; i < myCart.length; i++) { // re-render the cart
     cart.appendChild(myCart[i])
     console.log(cart)
   }
