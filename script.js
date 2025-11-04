@@ -7,6 +7,7 @@ const totalPriceSpan = document.getElementById('total-price'); // span within h3
 let totalPrice = 0;
 
 myCart = [] // array containing the item objects
+productCounter = 0 // product counter, helps index myCart
 
 // Function to update the total price
 function updateTotalPrice(amount) {
@@ -17,13 +18,11 @@ function updateTotalPrice(amount) {
 // Function to remove an item
 function removeItem(event) {
   const item = event.target.closest('li');
-  const price = parseFloat(item.dataset.price);
+  console.log(item)
+  const price = parseFloat(item.price);
   updateTotalPrice(-price);
   item.remove();
 }
-
-
-productCounter = 0
 
 // Add Product button event listener
 addProductButton.addEventListener("click", function () {
@@ -33,10 +32,10 @@ addProductButton.addEventListener("click", function () {
 
   ++productCounter
 
-  newLine = document.createElement("ul") // contains item info and remove button
+  newLine = document.createElement("li") // contains item info and remove button
   newLine.price = productPriceInput.value
   newLine.productCount = productCounter
-  newItem = document.createElement("li") // item name and price
+  newItem = document.createElement("div") // item name and price
   newItem.name = productNameInput.value // give it name class
   newItem.innerHTML = newItem.name
   newItem.price = productPriceInput.value // give it a price class
@@ -44,10 +43,11 @@ addProductButton.addEventListener("click", function () {
   buttonRemove = document.createElement("button") // remove button
   buttonRemove.innerHTML = "Remove"
   buttonRemove.addEventListener("click", (event) => {
-    totalPrice -= Number(event.target.closest("ul").price)
-    totalPriceSpan.innerHTML = totalPrice
-    myCart.splice(event.target.closest("ul").productCounter, 1)
-    event.target.closest("ul").remove()
+    removeItem(event)
+    // totalPrice -= Number(event.target.closest("li").price)
+    // totalPriceSpan.innerHTML = totalPrice
+    // myCart.splice(event.target.closest("li").productCounter, 1)
+    // event.target.closest("li").remove()
   })
 
   buttonQuantityUp = document.createElement("button") // quantity up button 
@@ -61,8 +61,7 @@ addProductButton.addEventListener("click", function () {
   newLine.append(newItem, buttonRemove, buttonQuantityUp, buttonQuantityDown)
   myCart.push(newLine) // add the new object to the object array
 
-  totalPrice += Number(newItem.price) // calculate total price
-  totalPriceSpan.innerHTML = totalPrice
+  updateTotalPrice(Number(newItem.price)) // calculate total price
 
   productNameInput.value = ""
   productPriceInput.value = ""
