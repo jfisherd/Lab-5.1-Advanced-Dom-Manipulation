@@ -41,6 +41,11 @@ addProductButton.addEventListener("click", function () {
     totalPrice -= Number(event.target.closest("ul").price)
     totalPriceSpan.innerHTML = totalPrice
     event.target.closest("ul").remove()
+    cart.innerHTML = ""
+  for (i = 0; i < myCart.length; i++) { // re-render the cart
+    cart.appendChild(myCart[i])
+    console.log(cart)
+  }
   })
 
   buttonQuantityUp = document.createElement("button") // quantity up button 
@@ -69,6 +74,6 @@ addProductButton.addEventListener("click", function () {
 })
 
 
-for (i=0;i<myCart.length;i++) {
+// for (i=0;i<myCart.length;i++) {
 
-}
+// }
