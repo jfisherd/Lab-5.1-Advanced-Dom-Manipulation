@@ -24,6 +24,9 @@ function removeItem(event) {
 
 // Add Product button event listener
 addProductButton.addEventListener("click", function () {
+  if (productNameInput.value == ""){
+    return alert("enter a name")
+  } 
   newLine = document.createElement("ul") // contains item info and remove button
   
   newItem = document.createElement("li") // item name and price
