@@ -30,7 +30,7 @@ Total price is updated any time an item is added or removed. Test cases are used
 
 > How did you handle invalid input for product name or price?
 
-placeholder
+Input fields cannot be blank, otherwise returns an alert. Input field for price only accepts numbers. Prices are checked to make sure they are not negative.
 <br>
 
 > What challenges did you face when implementing the remove functionality?
