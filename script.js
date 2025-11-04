@@ -22,14 +22,20 @@ function removeItem(event) {
   item.remove();
 }
 
+
+productCounter = 0
+
 // Add Product button event listener
 addProductButton.addEventListener("click", function () {
   if (productNameInput.value == "") return alert("enter a name")
   if (productPriceInput.value == "") return alert("enter a price")
   if (productPriceInput.value < 0) return alert("price cannot be negative")
 
+  ++productCounter
+
   newLine = document.createElement("ul") // contains item info and remove button
   newLine.price = productPriceInput.value
+  newLine.productCount = productCounter
   newItem = document.createElement("li") // item name and price
   newItem.name = productNameInput.value // give it name class
   newItem.innerHTML = newItem.name
@@ -40,6 +46,7 @@ addProductButton.addEventListener("click", function () {
   buttonRemove.addEventListener("click", (event) => {
     totalPrice -= Number(event.target.closest("ul").price)
     totalPriceSpan.innerHTML = totalPrice
+    myCart.splice(event.target.closest("ul").productCounter-1)
     event.target.closest("ul").remove()
   })
 
