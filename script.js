@@ -31,10 +31,14 @@ addProductButton.addEventListener("click", function () {
   newItem.innerHTML = newItem.name
   newItem.price = productPriceInput.value // give it a price class
 
-  newButton = document.createElement("button") // remove button
-  newButton.innerHTML = "Remove"
+  buttonRemove = document.createElement("button") // remove button
+  buttonRemove.innerHTML = "Remove"
+  buttonQuantityUp = document.createElement("button") // quantity up button 
+  buttonQuantityUp.innerHTML = "+"
+  buttonQuantityDown = document.createElement("button") // quantity down button
+  buttonQuantityDown.innerHTML = "-"
 
-  newLine.append(newItem,newButton)
+  newLine.append(newItem, buttonRemove, buttonQuantityUp, buttonQuantityDown) 
   myCart.push(newLine) // add the new object to the object array
 
   totalPrice += Number(newItem.price) // calculate total price
