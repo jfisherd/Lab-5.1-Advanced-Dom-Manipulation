@@ -29,7 +29,7 @@ addProductButton.addEventListener("click", function () {
   if (productPriceInput.value < 0) return alert("price cannot be negative")
 
   newLine = document.createElement("ul") // contains item info and remove button
-
+  newLine.price = productPriceInput.value
   newItem = document.createElement("li") // item name and price
   newItem.name = productNameInput.value // give it name class
   newItem.innerHTML = newItem.name
@@ -38,6 +38,8 @@ addProductButton.addEventListener("click", function () {
   buttonRemove = document.createElement("button") // remove button
   buttonRemove.innerHTML = "Remove"
   buttonRemove.addEventListener("click", (event) => {
+    totalPrice -= Number(event.target.closest("ul").price)
+    totalPriceSpan.innerHTML = totalPrice
     event.target.closest("ul").remove()
   })
 
@@ -67,5 +69,6 @@ addProductButton.addEventListener("click", function () {
 })
 
 
+for (i=0;i<myCart.length;i++) {
 
-
+}
