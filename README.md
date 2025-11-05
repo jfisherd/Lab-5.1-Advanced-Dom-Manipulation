@@ -10,9 +10,7 @@ In this lab a shopping list application is made with html elements and JavaScrip
 ## Running the program
 To view use this lab, open index.html in a web browser.<br>
 Add an item to the list by filling the input fields and clicking  <br>
-Remove the last item added by clicking the Remove Last Item button. <br>
-To see error messages click Add Item with an empty input field, or try to add an item already on the list.
--->
+Remove an item by clicking the Remove button. <br>
 <br>
 
 ## Reflection Questions
