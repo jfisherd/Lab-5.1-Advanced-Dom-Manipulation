@@ -18,10 +18,14 @@ function updateTotalPrice(amount) {
 // Function to remove an item
 function removeItem(event) {
   const item = event.target.closest('li');
-  console.log(item)
   const price = parseFloat(item.price);
   updateTotalPrice(-price);
   item.remove();
+  myCartColl = document.getElementsByClassName("newLine")
+  myCart = []
+  for (i=0;i<myCartColl;i++) {
+    myCart[i] = myCartColl[i]
+  }
 }
 
 // Add Product button event listener
@@ -33,30 +37,26 @@ addProductButton.addEventListener("click", function () {
   ++productCounter
 
   newLine = document.createElement("li") // contains item info and remove button
+  newLine.setAttribute("class","newLine")
   newLine.price = productPriceInput.value
   newLine.productCount = productCounter
+
   newItem = document.createElement("div") // item name and price
-  newItem.name = productNameInput.value // give it name class
+  newItem.name = productNameInput.value
   newItem.innerHTML = newItem.name
-  newItem.price = productPriceInput.value // give it a price class
+  newItem.price = productPriceInput.value
 
   buttonRemove = document.createElement("button") // remove button
   buttonRemove.innerHTML = "Remove"
   buttonRemove.addEventListener("click", (event) => {
     removeItem(event)
-    // totalPrice -= Number(event.target.closest("li").price)
-    // totalPriceSpan.innerHTML = totalPrice
-    // myCart.splice(event.target.closest("li").productCounter, 1)
-    // event.target.closest("li").remove()
   })
 
   buttonQuantityUp = document.createElement("button") // quantity up button 
   buttonQuantityUp.innerHTML = "+"
-  // buttonQuantityUp.addEventListener("click", )
 
   buttonQuantityDown = document.createElement("button") // quantity down button
   buttonQuantityDown.innerHTML = "-"
-  // buttonQuantityDown.addEventListener("click", )
 
   newLine.append(newItem, buttonRemove, buttonQuantityUp, buttonQuantityDown)
   myCart.push(newLine) // add the new object to the object array

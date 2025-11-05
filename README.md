@@ -3,14 +3,13 @@
 # Lab 5.1, Advanced DOM Manipulation
 
 ## Description
-<!-- 
-In this lab a simple shopping list application is made with html elements and JavaScript functionality.
--->
+In this lab a shopping list application is made with html elements and JavaScript functionality.
+
+
 
 ## Running the program
-<!-- 
 To view use this lab, open index.html in a web browser.<br>
-Add an item to the list by typing something in the input field and click the Add Ittem button. <br>
+Add an item to the list by filling the input fields and clicking  <br>
 Remove the last item added by clicking the Remove Last Item button. <br>
 To see error messages click Add Item with an empty input field, or try to add an item already on the list.
 -->
@@ -35,5 +34,5 @@ Input fields cannot be blank, otherwise returns an alert. Input field for price 
 
 > What challenges did you face when implementing the remove functionality?
 
-palceholder
+Removing the item from the document is easy using item.remove(), however updating the cart array had to be managed. 
 <br>
